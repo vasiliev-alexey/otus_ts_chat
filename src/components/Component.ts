@@ -45,6 +45,8 @@ export abstract class Component<State> {
    * @param patch - partial state for merge
    */
   public setState(patch: Partial<State>): void {
+    console.log('state setted', this.el);
+
     this.state = { ...this.state, ...patch };
     this.el.innerHTML = this.render();
   }

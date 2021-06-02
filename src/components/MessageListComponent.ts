@@ -3,8 +3,9 @@ import { State } from '../domain/State';
 
 export class MessageListComponent extends Component<State> {
   render(): string {
+    console.log('render', this.state);
     return this.templateEngine.template(
-      '{{for messages}}<tr><td>{{name}}</td></tr>{{end for}}',
+      '{{for messages}}<div>{{author}}  : {{messageText}}</div>{{end for}}',
       this.state
     );
   }

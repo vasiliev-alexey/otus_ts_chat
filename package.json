@@ -42,7 +42,6 @@
     "eslint-plugin-prettier": "^3.3.1",
     "html-webpack-plugin": "^5.3.1",
     "husky": "^6.0.0",
-    "css-loader": "^5.1.1",
     "jest": "^26.6.3",
     "jest-fetch-mock": "^3.0.3",
     "jest-mock-extended": "^1.0.13",
@@ -69,6 +68,8 @@
     }
   },
   "dependencies": {
+    "@firebase/firestore-types": "^2.3.0",
+    "@types/eventsource": "^1.1.5",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0"
   }
