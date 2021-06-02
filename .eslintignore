@@ -1,0 +1,6 @@
+coverage/*
+/docs/**
+!.eslintrc.js
+/dist/**
+
+src/js/
