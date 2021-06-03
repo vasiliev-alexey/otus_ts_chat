@@ -4,7 +4,6 @@ import { changeMessageText, sendMessageToChat } from '../app';
 
 export class MessageBoxComponent extends Component<State> {
   private onClick = (): void => {
-
     sendMessageToChat(
       this.state.userName ?? 'Анониму',
       this.state.messageText ?? ''
