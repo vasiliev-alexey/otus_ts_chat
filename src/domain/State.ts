@@ -6,10 +6,12 @@ export type Message = {
 export type State = {
   userName: string | undefined;
   messages: Array<Message>;
+  messageText: string | undefined;
 };
 
 export const initialState: State = {
-  userName: undefined,
+  userName: 'Неопознанный енот',
+  messageText: 'hola hola',
   messages: [
     { messageText: 'sss', author: 'author' },
     { messageText: 'dddd', author: 'author2' },

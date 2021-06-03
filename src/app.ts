@@ -4,26 +4,52 @@ import {
   listenMessagesThunkAction,
   sendMessageThunkAction,
 } from './reducers/reducer';
+import { MessageBoxComponent } from './components/MessageBoxComponent';
+import { UserComponent } from './components/UserComponent';
+import {
+  messageChangeActionCreator,
+  userChangeActionCreator,
+} from './reducers/messageIncomeActionCreator';
 
-export function renderData(): void {
+export async function renderData(): Promise<void> {
   const messageRoot = document.querySelector<HTMLDivElement>('#messageList');
-  const btn = document.querySelector<HTMLButtonElement>('#postMessage')!;
+  const messageBox = document.querySelector<HTMLDivElement>('#messageBox');
+  const userInfoElement = document.querySelector<HTMLDivElement>('#userInfo');
 
-  btn.addEventListener('click', sendMessageToChat);
+  if (userInfoElement) {
+    store.subscribe(() => {
+      new UserComponent(userInfoElement, store.getState());
+    });
+  }
 
   if (messageRoot) {
-    console.log('mounted');
-
     const messageList = new MessageListComponent(messageRoot, store.getState());
-    messageList.setState(store.getState());
-
-    store.dispatch(listenMessagesThunkAction());
     store.subscribe(() => {
       messageList.setState(store.getState());
     });
   }
+
+  if (messageBox) {
+    store.subscribe(() => {
+      const state = { ...store.getState() };
+      new MessageBoxComponent(messageBox, state);
+    });
+  }
+
+  await store.dispatch(listenMessagesThunkAction());
 }
 
-export async function sendMessageToChat(): Promise<void> {
-  await store.dispatch(sendMessageThunkAction('vasiliev-alexey', 'it worked'));
+export async function sendMessageToChat(
+  name: string,
+  message: string
+): Promise<void> {
+  await store.dispatch(sendMessageThunkAction(name, message));
+}
+
+export function changeUserName(newName: string): void {
+  store.dispatch(userChangeActionCreator(newName));
+}
+
+export function changeMessageText(newMessage: string): void {
+  store.dispatch(messageChangeActionCreator(newMessage));
 }

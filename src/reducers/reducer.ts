@@ -1,18 +1,15 @@
 import { Dispatch, Reducer } from 'redux';
 import { initialState, State } from '../domain/State';
 import {
+  MESSAGE_CHANGED,
   MESSAGE_INCOME,
   messageIncomeActionCreator,
   messageSendActionCreator,
+  USER_NAME_CHANGED,
 } from './messageIncomeActionCreator';
-import {
-  getMessagesList,
-  observeWithEventSource,
-  sendMessage,
-} from './firebaseApi';
+import { observeWithEventSource, sendMessage } from './firebaseApi';
 
 export const reducer: Reducer<State> = (state = initialState, action) => {
-  //  console.log("reducer called", action)
   const newState = { ...state };
   switch (action.type) {
     case MESSAGE_INCOME: {
@@ -20,6 +17,14 @@ export const reducer: Reducer<State> = (state = initialState, action) => {
         messageText: `messageText: ${action.message}`,
         author: `author: ${action.name}`,
       });
+      return newState;
+    }
+    case USER_NAME_CHANGED: {
+      newState.userName = action.userName;
+      return newState;
+    }
+    case MESSAGE_CHANGED: {
+      newState.messageText = action.newMessage;
       return newState;
     }
     default:

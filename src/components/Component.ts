@@ -10,7 +10,7 @@ export abstract class Component<State> {
   public events?: {
     [key: string]: (ev: Event) => void;
   };
-  private el: HTMLElement;
+  private readonly el: HTMLElement;
   private isMounted = false;
 
   constructor(el: HTMLElement, initialState: Partial<State> = {}) {
@@ -34,6 +34,7 @@ export abstract class Component<State> {
     Object.entries(this.events).forEach((el) => {
       const arr = el[0].split('@');
       const element = document.querySelectorAll(arr[1]);
+
       element.forEach((child) => {
         child.addEventListener(arr[0], el[1]);
       });
@@ -45,8 +46,6 @@ export abstract class Component<State> {
    * @param patch - partial state for merge
    */
   public setState(patch: Partial<State>): void {
-    console.log('state setted', this.el);
-
     this.state = { ...this.state, ...patch };
     this.el.innerHTML = this.render();
   }
