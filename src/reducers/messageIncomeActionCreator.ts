@@ -9,7 +9,11 @@ export function messageIncomeActionCreator(
   name: string,
   message: string
 ): AnyAction {
-  return { type: MESSAGE_INCOME, name, message };
+  return {
+    type: MESSAGE_INCOME,
+    name: name ?? 'Сегодня',
+    message: message ?? Date.now(),
+  };
 }
 
 export function messageSendActionCreator(): AnyAction {

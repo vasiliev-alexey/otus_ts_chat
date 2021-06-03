@@ -15,3 +15,9 @@
   /*overflow-x: scroll; */
   overflow-y: scroll;
 }
+
+.bold {
+  font-style: italic;
+  font-size: 1.33em;
+  background: #f6c6ce;
+}

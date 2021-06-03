@@ -11,11 +11,12 @@ import { observeWithEventSource, sendMessage } from './firebaseApi';
 
 export const reducer: Reducer<State> = (state = initialState, action) => {
   const newState = { ...state };
+
   switch (action.type) {
     case MESSAGE_INCOME: {
       newState.messages.push({
-        messageText: `messageText: ${action.message}`,
-        author: `author: ${action.name}`,
+        messageText: `${action.message}`,
+        author: `${action.name}`,
       });
       return newState;
     }

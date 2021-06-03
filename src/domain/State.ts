@@ -12,8 +12,5 @@ export type State = {
 export const initialState: State = {
   userName: 'Неопознанный енот',
   messageText: 'hola hola',
-  messages: [
-    { messageText: 'sss', author: 'author' },
-    { messageText: 'dddd', author: 'author2' },
-  ],
+  messages: [],
 };

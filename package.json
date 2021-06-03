@@ -10,7 +10,7 @@
     "lint": "prettier --check . && eslint . --ext .js,.ts && tsc --noEmit",
     "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts && tsc --noEmit",
     "build": "webpack",
-    "dev": "webpack server --port 5000"
+    "dev": "webpack server --port 5000 "
   },
   "keywords": [],
   "author": "vasiliev-alexey",

@@ -4,6 +4,7 @@ import { changeMessageText, sendMessageToChat } from '../app';
 
 export class MessageBoxComponent extends Component<State> {
   private onClick = (): void => {
+
     sendMessageToChat(
       this.state.userName ?? 'Анониму',
       this.state.messageText ?? ''
@@ -28,9 +29,7 @@ export class MessageBoxComponent extends Component<State> {
       `<p>Введите сообщение:</p>
       <div>
 
-        <textarea  id='messageTextBox' class="scrollMessage" >{{messageText}}
-        
-        </textarea>
+        <textarea  id='messageTextBox' class="scrollMessage" >{{messageText}}</textarea>
       </div>
       <button id="postMessage" >Отправить в Чат</button>`,
       this.state
