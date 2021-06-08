@@ -5,6 +5,11 @@ import { changeMessageText, sendMessageToChat } from '../app';
 export class MessageBoxComponent extends Component<State> {
   private localState = this.state.messageText;
 
+  setState(patch: Partial<State>): void {
+    this.localState = patch.messageText;
+    super.setState(patch);
+  }
+
   private onClick = (): void => {
     changeMessageText(this.localState ?? '');
     sendMessageToChat(
