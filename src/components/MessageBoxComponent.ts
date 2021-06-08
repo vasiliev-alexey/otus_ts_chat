@@ -3,32 +3,36 @@ import { State } from '../domain/State';
 import { changeMessageText, sendMessageToChat } from '../app';
 
 export class MessageBoxComponent extends Component<State> {
+  private localState = this.state.messageText;
+
   private onClick = (): void => {
+    changeMessageText(this.localState ?? '');
     sendMessageToChat(
       this.state.userName ?? 'Анониму',
-      this.state.messageText ?? ''
+      this.localState ?? ''
     ).then(() => {
       changeMessageText('');
     });
   };
 
   private onchange = (e: Event): void => {
+    e.preventDefault();
     if (e.target !== null) {
-      changeMessageText((e.target as HTMLInputElement).value);
+      this.localState = (e.target as HTMLInputElement).value;
     }
   };
 
   events = {
     'click@#postMessage': this.onClick,
-    'change@#messageTextBox': this.onchange,
+    'keyup@#messageTextBox': this.onchange,
   };
 
   render(): string {
     return this.templateEngine.template(
       `<p>Введите сообщение:</p>
-      <div>
+      <div id="block">
 
-        <textarea  id='messageTextBox' class="scrollMessage" >{{messageText}}</textarea>
+        <textarea  id='messageTextBox'  autofocus  class="scrollMessage" >{{messageText}}</textarea>
       </div>
       <button id="postMessage" >Отправить в Чат</button>`,
       this.state
