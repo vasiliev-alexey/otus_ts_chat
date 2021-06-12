@@ -36,7 +36,7 @@ export async function renderData(): Promise<void> {
     });
   }
 
-  await store.dispatch(listenMessagesThunkAction());
+  store.dispatch(listenMessagesThunkAction());
 }
 
 export async function sendMessageToChat(

@@ -8,7 +8,6 @@ const webpack = require('webpack');
 //import {HtmlWebpackPlugin}  from 'html-webpack-plugin';
 
 module.exports = {
-  mode: 'development',
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({

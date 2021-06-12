@@ -34,7 +34,7 @@ export const reducer: Reducer<State> = (state = initialState, action) => {
 };
 
 export const listenMessagesThunkAction = () => {
-  return async (dispatch: Dispatch): Promise<void> => {
+  return (dispatch: Dispatch): void => {
     observeWithEventSource((data: { name: string; message: string }) => {
       dispatch(messageIncomeActionCreator(data.name, data.message));
     });
