@@ -1,0 +1,23 @@
+.scrollDiv {
+  height: 500px;
+  width: 80%;
+  background: #fff;
+  border: 1px solid #c1c1c1;
+  /*overflow-x: scroll; */
+  overflow-y: scroll;
+}
+
+.scrollMessage {
+  height: 100px;
+  width: 80%;
+  background: #fff;
+  border: 1px solid #c1c1c1;
+  /*overflow-x: scroll; */
+  overflow-y: scroll;
+}
+
+.bold {
+  font-style: italic;
+  font-size: 1.33em;
+  background: #f6c6ce;
+}
